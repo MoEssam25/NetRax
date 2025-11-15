@@ -1,0 +1,16 @@
+{
+  "name": "netrax",
+  "version": "1.0.0",
+  "description": "Static HTML/CSS/JS website",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Static site - no build required' && exit 0",
+    "dev": "echo 'Open index.html in browser'"
+  },
+  "keywords": ["static", "html", "css", "javascript"],
+  "author": "Your Name",
+  "license": "MIT",
+  "bolt": {
+    "type": "static"
+  }
+}
