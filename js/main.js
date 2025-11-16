@@ -1,11 +1,17 @@
 // Smooth scroll functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scroll for navigation links
-    const navLinks = document.querySelectorAll('a[href^="#"]');
+    const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            
+            // Close mobile menu when a link is clicked
+            const menuToggle = document.getElementById('menu-toggle');
+            if (menuToggle.checked) {
+                menuToggle.checked = false;
+            }
             
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
@@ -20,6 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Close menu when clicking on overlay
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (mainNav) {
+        mainNav.addEventListener('click', function(e) {
+            if (e.target === this) {
+                menuToggle.checked = false;
+            }
+        });
+    }
 
     // Features animation
     let features = document.querySelector(".features");
@@ -44,4 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
+
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && menuToggle.checked) {
+            menuToggle.checked = false;
+        }
+    });
 });
